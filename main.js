@@ -5,11 +5,11 @@ canvas.height=400;
 canvas.width=500;
 canvas.style.border="1px solid"
 var images = {
-  accessories:["glasses","ice","hands","makeup","none"],
-  mouth:["smile","tired","yum","rage","bucktooth","teeth","surprise","scream","makeup"],
-  eyes:["basic","tired","yum","rage","down","open"],
-  eyebrows:["tired","none"],
-  face:["basic","rage","cold","mind_blown","surprise","clown"]
+  face:["basic","flushed","rage","cold","mind_blown","surprise","clown","devil","small"],
+  mouth:["smile","tired","yum","big","rage","bucktooth","teeth","surprise","scream","makeup","flat","smirk","grin","swearing","love","kissing","money","open","tongue"],
+  eyes:["basic","tired","yum","rage","down","open","bug","sus","relieved","heart","wink","money","squint","sob"],
+  eyebrows:["tired","surprised","wonk","none"],
+  accessories:["glasses","ice","hands","makeup","halo","monacle","sunglasses","mask","sweat","3_hearts","cowboy","none"]
 };
 var loaded = {};
 
@@ -30,8 +30,13 @@ function loop(){
   });
 
   Object.keys(images).forEach((key,index) =>{
-    ctx.fillStyle="black";
+    ctx.fillStyle = "black";
     ctx.fillRect(450,index*88,50,50)
+
+    let label = key[0].toUpperCase() + key.slice(1)
+    ctx.fillStyle = "black"
+    ctx.textAlign = "end"
+    ctx.fillText(label, 445,index*88 + 10)
   })
   setTimeout(loop,100);
 }
@@ -65,8 +70,10 @@ Object.keys(images).forEach(key => {
 });
 
 canvas.addEventListener("click", (e)=>{
-  let mouseX = e.clientX;
-  let mouseY = e.clientY;
+  let rect = canvas.getBoundingClientRect()
+
+  let mouseX = e.clientX - rect.left;
+  let mouseY = e.clientY - rect.top;
   if(mouseX>450){
     if(mouseY<50){
       if(images.face.length-1>drawIndex.face){
