@@ -7,4 +7,4 @@ At the time of writing there are a total of 114,912 combinations coming from:
 - 19 Mouths
 - 14 Eyes
 - 3 Eyebrows (+1 if you count none as an option)
-- 11 Accessories (+1 if you count none as an option
+- 11 Accessories (+1 if you count none as an option)
